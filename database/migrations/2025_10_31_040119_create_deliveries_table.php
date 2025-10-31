@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            $table->foreignId('driver_id')->nullable()->constrained()->onDelete('set null');
+            $table->timestamp('delivery_time')->nullable();
+            $table->integer('estimated_duration')->nullable(); // in minutes
             $table->timestamps();
         });
     }

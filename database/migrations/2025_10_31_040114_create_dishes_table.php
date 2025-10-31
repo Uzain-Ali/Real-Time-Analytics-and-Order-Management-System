@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('dishes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('restaurant_id')->constrained()->onDelete('cascade');
+            $table->string('name');
+            $table->string('category');
+            $table->decimal('price', 8, 2);
+            $table->integer('popularity_score')->default(0);
+            $table->boolean('availability_status')->default(true);
             $table->timestamps();
         });
     }

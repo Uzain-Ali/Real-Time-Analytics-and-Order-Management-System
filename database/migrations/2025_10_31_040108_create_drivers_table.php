@@ -12,9 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('drivers', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // this is unsignedBigInteger by default
+            $table->string('name');
             $table->timestamps();
         });
+
     }
 
     /**
