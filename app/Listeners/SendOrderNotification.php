@@ -13,7 +13,11 @@ class SendOrderNotification
     public function handle(OrderPlaced $event): void
     {
         $user = $event->order->user;
-        // Send notification to the user
-        $user->notify(new OrderNotification($event->order));
+
+        if ($user) {
+            $user->notify(new OrderNotification($event->order));
+        } else {
+            \Log::warning('No user found for order ID: ' . $event->order->id);
         }
+    }
 }

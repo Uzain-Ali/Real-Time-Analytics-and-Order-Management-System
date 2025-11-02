@@ -7,14 +7,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// 🔹 Built-in Auth Routes (login, register, etc.)
 Auth::routes();
 
-// 🔐 Protected routes
-Route::middleware(['auth'])->group(function () {
-    Route::get('/order/place', [OrderController::class, 'placeOrder']);
+Route::middleware(['web', 'auth'])->group(function () {
+    Route::post('/orders', [OrderController::class, 'store']);
+    Route::put('/orders/{id}', [OrderController::class, 'updateStatus']);
+    Route::get('/orders/active', [OrderController::class, 'activeOrders']);
 });
-
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

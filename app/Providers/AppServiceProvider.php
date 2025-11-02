@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-use App\Service\PaymentService;
+use App\Services\PaymentService;
 use Illuminate\Support\Facades\Event;
 use App\Events\OrderPlaced;
 use App\Listeners\SendOrderNotification;

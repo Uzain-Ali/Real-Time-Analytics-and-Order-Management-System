@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Restaurant;
 use App\Models\Delivery;
+use App\Models\User;
 
 class Order extends Model
 {
@@ -18,5 +19,10 @@ class Order extends Model
 
     public function delivery() {
         return $this->hasOne(Delivery::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

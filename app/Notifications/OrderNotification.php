@@ -36,7 +36,7 @@ class OrderNotification extends Notification
     {
         return (new MailMessage)
             ->subject('Order Placed Successfully')
-            ->line('Your order of Rs. ' . $this->order->amount . ' has been placed successfully.')
+            ->line('Your order of Rs. ' . $this->order->total_cost . ' has been placed successfully.')
             ->line('Thank you for shopping with us!');
     }
 
@@ -48,7 +48,7 @@ class OrderNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'message' => 'Your order of Rs. ' . $this->order->amount . ' has been placed successfully.',
+            'message' => 'Your order of Rs. ' . $this->order->total_cost . ' has been placed successfully.',
         ];
     }
 }
